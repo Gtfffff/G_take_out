@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>g_take_out</artifactId>
+        <groupId>com.g</groupId>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>g-service</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>g-auth</module>
+        <module>g-chatroom</module>
+        <module>g-gateway</module>
+        <module>g-es</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--G_take_out-->
+            <dependency>
+                <groupId>com.g</groupId>
+                <artifactId>g-auth</artifactId>
+                <version>${g.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.g</groupId>
+                <artifactId>g-auth</artifactId>
+                <version>${g.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.g</groupId>
+                <artifactId>g-auth</artifactId>
+                <version>${g.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.g</groupId>
+                <artifactId>g-auth</artifactId>
+                <version>${g.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!--Spring-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--注册中心-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-io</groupId>
+                    <artifactId>commons-io</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--据说discovery引入io有bug-->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+        <!--配置中心-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+    </dependencies>
+
+
+
+</project>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>g_take_out</artifactId>
+        <groupId>com.g</groupId>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>g-tools</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>g-swagger</module>
+        <module>g-log</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--G_take_out-->
+            <dependency>
+                <groupId>com.g</groupId>
+                <artifactId>g-log</artifactId>
+                <version>${g.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.g</groupId>
+                <artifactId>g-swagger</artifactId>
+                <version>${g.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>

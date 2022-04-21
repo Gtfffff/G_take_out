@@ -3,30 +3,91 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.g</groupId>
     <artifactId>g_take_out</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>g-gateway</module>
-        <module>g-deliveryman</module>
-        <module>g-admin</module>
-        <module>g-auth</module>
-        <module>g-chatroom</module>
         <module>g-commons</module>
-        <module>g-customer</module>
+        <module>g-service-api</module>
+        <module>g-tools</module>
+        <module>g-service</module>
     </modules>
 
     <properties>
+        <g.version>1.0-SNAPSHOT</g.version>
+
+        <java.version>1.8</java.version>
+        <swagger.version>2.10.5</swagger.version>
+        <swagger.models.version>1.6.2</swagger.models.version>
+        <knife4j.version>2.0.9</knife4j.version>
+        <captcha.version>1.6.2</captcha.version>
+        <easyexcel.version>2.2.6</easyexcel.version>
+        <mica.auto.version>1.2.5</mica.auto.version>
+        <alibaba.cloud.version>2021.0.1.0</alibaba.cloud.version>
+        <alibaba.nacos.version>2.0.4</alibaba.nacos.version>
+        <spring.boot.admin.version>2.6.2</spring.boot.admin.version>
+        <spring.plugin.version>2.0.0.RELEASE</spring.plugin.version>
+        <spring.boot.version>2.6.3</spring.boot.version>
+        <spring.cloud.version>2021.0.1</spring.cloud.version>
+        <spring.platform.version>Cairo-SR8</spring.platform.version>
     </properties>
 
     <dependencyManagement>
+        <dependencies>
+            <!--G_take_out-->
+            <dependency>
+                <groupId>com.g</groupId>
+                <artifactId>g_take_out</artifactId>
+                <version>${g.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.g</groupId>
+                <artifactId>g-service</artifactId>
+                <version>${g.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.g</groupId>
+                <artifactId>g-tools</artifactId>
+                <version>${g.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.g</groupId>
+                <artifactId>g-commons</artifactId>
+                <version>${g.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.g</groupId>
+                <artifactId>g-service-api</artifactId>
+                <version>${g.version}</version>
+            </dependency>
 
+            <!--Spring-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
     </dependencyManagement>
-    <dependencies>
 
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
