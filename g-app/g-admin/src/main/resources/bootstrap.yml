@@ -1,0 +1,21 @@
+spring:
+  application:
+    # 微服务标识
+    name: admin
+  main:
+    # 覆盖Bean
+    allow-bean-definition-overriding: true
+  profiles:
+    active: @pom.profile.name@
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        security: DEBUG
+mybatis-plus:
+  configuration:
+    call-setters-on-nulls: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+feign:
+  hystrix:
+    enabled: true

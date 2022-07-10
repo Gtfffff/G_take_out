@@ -1,0 +1,14 @@
+
+# Spring配置
+spring:
+  application:
+    # 微服务标识
+    name: gateway
+  main:
+    # 覆盖Bean
+    allow-bean-definition-overriding: true
+    web-application-type: reactive
+  profiles:
+    group:
+      "dev": secu
+    active: @pom.profile.name@

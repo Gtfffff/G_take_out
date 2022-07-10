@@ -1,0 +1,30 @@
+spring:
+  cache:
+    type: GENERIC
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${mysql.host}:${mysql.port}/g_take_out?serverTimezone=UTC
+    username: ${mysql.username}
+    password: ${mysql.password}
+  session: ${session}
+  security:
+    oauth2:
+      # localClient:
+      #   secret: ${secret}
+      # token: ${token}
+      # resource:
+        # jwkSetUri: ${jwkSetUri}
+      ignoreUrls:
+        - /addressBook/test2
+        - /user/userDetails/**
+        - /pv/**
+        - /pb/signup/**
+
+j2cache: ${j2cache}
+
+lettuce: ${lettuce}
+
+caffeine: ${caffeine}
+
+security: disable

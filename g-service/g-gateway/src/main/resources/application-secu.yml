@@ -1,0 +1,66 @@
+spring:
+  security:
+    oauth2:
+      client:
+        #发起授权请求需要的信息
+        registration:
+          #具体资源
+          web-client-authorization_code:
+              #对应的授权方
+              provider: authServer
+              #注册的客户端id
+              clientId: web-client
+              #注册的客户端密钥
+              clientSecret: secret
+              #采用的认证模式
+              authorizationGrantType: authorization_code
+              #客户端身份验证方法，使用默认方式可以不写
+              clientAuthenticationMethod: client_secret_basic
+              #回调地址
+              redirectUri: http://www.baidu.com
+              #权限
+              scope: all
+#            clientName:
+          web-client-client-mode:
+              #对应的授权方
+              provider: client
+              #注册的客户端id
+              clientId: c1
+              #注册的客户端密钥
+              clientSecret: secret
+              #采用的认证模式
+              authorizationGrantType: authorization_code
+              #客户端身份验证方法，使用默认方式可以不写
+              clientAuthenticationMethod: client_secret_basic
+              #回调地址
+              redirectUri: http://www.baidu.com
+              #权限
+              scope: C1
+        #授权方的相关信息
+        provider:
+          authServer:
+              #认证地址
+              authorizationUri: http://localhost:10020/auth/oauth/authorize
+              #获取token地址
+              tokenUri: http://localhost:10020/auth/oauth/token
+#              #获取用户信息
+#              userInfoUri:
+#              #用户名是哪个字段
+#              userNameAttribute:
+              #获取jwkSet
+              jwkSetUri: http://localhost:10020/auth/.well-known/openid-configuration/jwks.json
+#              #授权服务器
+#              issuerUri: http://localhost:10020/auth
+          client:
+              #认证地址
+              authorizationUri: http://localhost:10020/auth/oauth/authorize
+              #获取token地址
+              tokenUri: http://localhost:10020/auth/oauth/token
+#              #获取用户信息
+#              userInfoUri:
+#              #用户名是哪个字段
+#              userNameAttribute:
+              #获取jwkSet
+              jwkSetUri: http://localhost:10020/auth/.well-known/openid-configuration/jwks.json
+#              #授权服务器
+#              issuerUri: http://localhost:10020/auth

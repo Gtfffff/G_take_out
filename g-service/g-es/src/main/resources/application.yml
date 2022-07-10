@@ -1,0 +1,21 @@
+spring:
+  redis:
+    host: 192.168.70.129
+    port: 6379
+    database: 0
+    password:
+  cache:
+    type: GENERIC
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${mysql.host}:${mysql.port}/g_take_out?serverTimezone=UTC
+    username: ${mysql.username}
+    password: ${mysql.password}
+  session: ${session}
+
+j2cache: ${j2cache}
+
+lettuce: ${lettuce}
+
+caffeine: ${caffeine}

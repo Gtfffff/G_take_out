@@ -1,0 +1,56 @@
+spring:
+  cache:
+    type: GENERIC
+  session: ${session}
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${mysql.host}:${mysql.port}/g_take_out?serverTimezone=UTC
+    username: ${mysql.username}
+    password: ${mysql.password}
+  cloud:
+    loadbalancer:
+      cache:
+        enabled: true
+        caffeine:
+          spec: initialCapacity=500,expireAfterWrite=5s
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      #路由配置
+      routes:
+        - id: 认证中心
+          uri: lb://auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+        - id: 顾客系统
+          uri: lb://customer
+          predicates:
+            - Path=/customer/**
+          filters:
+            - StripPrefix=1
+      globalcors:
+        #接受option请求
+        add-to-simple-url-handler-mapping: true
+        cors-configurations:
+          '[/**]':
+            #被允许跨域请求的网站
+            allowedOrigins: /**
+            #被允许的请求方式
+            allowedMethods:
+              - "GET"
+              - "POST"
+              - "DELETE"
+              - "PUT"
+              - "OPTIONS"
+            #被允许的请求头信息
+            allowedHeaders: "*"
+            #是否允许携带cookie
+            allowCredentials: true
+            #跨域检测的有效时间
+            maxAge: 360000
+

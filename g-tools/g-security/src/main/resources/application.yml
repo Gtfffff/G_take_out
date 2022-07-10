@@ -1,0 +1,15 @@
+#spring:
+#  session: ${session}
+#    store-type: redis
+#    #用于存储会话的键的命名空间
+#    redis:
+#      namespace: spring：session
+#    timeout: 30m
+#  security: ${security}
+#    oauth2:
+#      resource:
+#        jwkSetUri: ${JWK_SET_URI:http://localhost:10020/pb/.well-known/openid-configuration/jwks.json}
+#        ignoreUrls:
+#          - /addressBook/test2
+#          - /user/userDetails/**
+#          - /pv/**

@@ -1,0 +1,32 @@
+#自定义属性
+g:
+  nacos:
+    ip: @pom.nacos.ip@
+    port: @pom.nacos.port@
+    namespace: @pom.nacos.namespace@
+# 服务器
+server:
+  # 端口
+  port: 11000
+spring:
+  cloud:
+    # Nacos 配置
+    nacos:
+      # 服务发现
+      discovery:
+        # 命名空间
+        namespace: ${g.nacos.namespace}
+        # 服务发现地址
+        server-addr: ${g.nacos.ip}:${g.nacos.port}
+      # 服务配置
+      config:
+        # 命名空间
+        namespace: ${g.nacos.namespace}
+        # 服务发现地址
+        server-addr: ${g.nacos.ip}:${g.nacos.port}
+        # 配置文件后缀名
+        file-extension: yml
+        # 公共配置
+        shared-configs[0]:
+          data-id: g-common.yml
+          refresh: true

@@ -1,0 +1,9 @@
+spring:
+  application:
+    # 微服务标识
+    name: customer
+  main:
+    # 覆盖Bean
+    allow-bean-definition-overriding: true
+  profiles:
+    active: @pom.profile.name@
