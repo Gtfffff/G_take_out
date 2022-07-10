@@ -2,16 +2,75 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-
     <parent>
-        <groupId>com.g</groupId>
         <artifactId>g_take_out</artifactId>
+        <groupId>com.g</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
+
+    <modelVersion>4.0.0</modelVersion>
     <artifactId>g-commons</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <!--Spring-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!--MP-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+        <!--Mysql驱动-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <!--Bootstrap的引导程序-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
+        <!--J2cache缓存-->
+        <dependency>
+            <groupId>com.itheima</groupId>
+            <artifactId>pd-tools-j2cache</artifactId>
+        </dependency>
+        <!--Jwt解码工具-->
+        <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
+            <version>9.14</version>
+            <scope>compile</scope>
+        </dependency>
+        <!--通过Ip获取城市信息-->
+        <dependency>
+            <groupId>org.lionsoul</groupId>
+            <artifactId>ip2region</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <!--IO工具-->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.itheima</groupId>
+            <artifactId>pd-tools-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.itheima</groupId>
+            <artifactId>pd-tools-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
+    </dependencies>
 
 
 </project>

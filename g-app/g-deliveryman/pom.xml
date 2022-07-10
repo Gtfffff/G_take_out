@@ -6,11 +6,11 @@
 
     <parent>
         <groupId>com.g</groupId>
-        <artifactId>g_take_out</artifactId>
+        <artifactId>g-app</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>g-admin</artifactId>
+    <artifactId>g-deliveryman</artifactId>
     <version>1.0-SNAPSHOT</version>
 
 

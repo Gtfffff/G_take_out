@@ -2,68 +2,109 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- 基本信息 -->
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.g</groupId>
     <artifactId>g_take_out</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <!-- 子模块 -->
     <modules>
         <module>g-commons</module>
-        <module>g-service-api</module>
+        <module>g-app</module>
         <module>g-tools</module>
         <module>g-service</module>
     </modules>
 
+    <!-- 公共属性 -->
     <properties>
         <g.version>1.0-SNAPSHOT</g.version>
-
-        <java.version>1.8</java.version>
-        <swagger.version>2.10.5</swagger.version>
-        <swagger.models.version>1.6.2</swagger.models.version>
-        <knife4j.version>2.0.9</knife4j.version>
-        <captcha.version>1.6.2</captcha.version>
-        <easyexcel.version>2.2.6</easyexcel.version>
-        <mica.auto.version>1.2.5</mica.auto.version>
-        <alibaba.cloud.version>2021.0.1.0</alibaba.cloud.version>
-        <alibaba.nacos.version>2.0.4</alibaba.nacos.version>
-        <spring.boot.admin.version>2.6.2</spring.boot.admin.version>
-        <spring.plugin.version>2.0.0.RELEASE</spring.plugin.version>
         <spring.boot.version>2.6.3</spring.boot.version>
         <spring.cloud.version>2021.0.1</spring.cloud.version>
-        <spring.platform.version>Cairo-SR8</spring.platform.version>
+        <mybatisplus.version>3.5.1</mybatisplus.version>
+        <pinda.tool.version1>1.0-SNAPSHOT</pinda.tool.version1>
+        <pinda.tool.version2>2.0-SNAPSHOT</pinda.tool.version2>
+        <hutool.version>5.7.22</hutool.version>
+        <oauth2.version>2.2.5.RELEASE</oauth2.version>
+        <weixin-java.version>4.1.5.B</weixin-java.version>
+        <druid.version>1.2.8</druid.version>
+        <jwt.version>1.0.10.RELEASE</jwt.version>
+        <jjwt.version>0.9.1</jjwt.version>
+        <session.version>2.6.2</session.version>
+        <java.version>1.8</java.version>
+        <alibaba.cloud.version>2021.0.1.0</alibaba.cloud.version>
+        <alibaba.nacos.version>2.0.4</alibaba.nacos.version>
+        <spring.plugin.version>2.0.0.RELEASE</spring.plugin.version>
+        <ip2region.version>1.7.2</ip2region.version>
+        <commonsIo.version>2.11.0</commonsIo.version>
+        <springfox.swagger2.version>3.0.0</springfox.swagger2.version>
+        <knife4j.version>2.0.9</knife4j.version>
+        <swagger.version>1.6.2</swagger.version>
+        <guava.version>20.0</guava.version>
+        <fastjson.version>1.2.62</fastjson.version>
+        <hibernate-validator.version>6.2.3.Final</hibernate-validator.version>
     </properties>
 
+    <!-- 环境 -->
+    <profiles>
+        <!-- 开发环境 -->
+        <profile>
+            <id>dev</id>
+            <!--激活配置-->
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <pom.profile.name>dev</pom.profile.name>
+                <pom.nacos.ip>127.0.0.1</pom.nacos.ip>
+                <pom.nacos.port>8848</pom.nacos.port>
+                <pom.nacos.namespace>648106e9-b8c2-4c99-ad5d-186c8d136c31</pom.nacos.namespace>
+            </properties>
+        </profile>
+    </profiles>
+
+    <!-- 依赖控制 -->
     <dependencyManagement>
         <dependencies>
-            <!--G_take_out-->
-            <dependency>
-                <groupId>com.g</groupId>
-                <artifactId>g_take_out</artifactId>
-                <version>${g.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.g</groupId>
-                <artifactId>g-service</artifactId>
-                <version>${g.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.g</groupId>
-                <artifactId>g-tools</artifactId>
-                <version>${g.version}</version>
-            </dependency>
+            <!-- 项目公共资源包 -->
             <dependency>
                 <groupId>com.g</groupId>
                 <artifactId>g-commons</artifactId>
                 <version>${g.version}</version>
             </dependency>
+            <!-- 安全模块包 -->
             <dependency>
                 <groupId>com.g</groupId>
-                <artifactId>g-service-api</artifactId>
+                <artifactId>g-security</artifactId>
                 <version>${g.version}</version>
             </dependency>
-
-            <!--Spring-->
+            <!-- feign实现模块 -->
+            <dependency>
+                <groupId>com.g</groupId>
+                <artifactId>g-feign-api</artifactId>
+                <version>${g.version}</version>
+            </dependency>
+            <!-- Session共享 -->
+            <dependency>
+                <groupId>com.g</groupId>
+                <artifactId>g-session</artifactId>
+                <version>${g.version}</version>
+            </dependency>
+            <!-- oauth属性实体类 -->
+            <dependency>
+                <groupId>com.g</groupId>
+                <artifactId>g-oauth-properties</artifactId>
+                <version>${g.version}</version>
+            </dependency>
+            <!-- 日志功能实现,使用黑马的log模块,做了适配 -->
+            <dependency>
+                <groupId>com.g</groupId>
+                <artifactId>g-log</artifactId>
+                <version>${g.version}</version>
+            </dependency>
+            <!-- Spring Boot -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -71,6 +112,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- Spring Cloud -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -78,19 +120,234 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- Alibaba Cloud -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${alibaba.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- 工具包 -->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <!-- MP -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatisplus.version}</version>
+            </dependency>
+            <!--黑马的品达J2cache，修改了关于序列化的代码-->
+            <dependency>
+                <groupId>com.itheima</groupId>
+                <artifactId>pd-tools-j2cache</artifactId>
+                <version>${pinda.tool.version2}</version>
+            </dependency>
+            <!--Spring cloud oauth2-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-security</artifactId>
+                <version>${oauth2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-oauth2</artifactId>
+                <version>${oauth2.version}</version>
+            </dependency>
+            <!--Jwt-->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-jwt</artifactId>
+                <version>${jwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <!--Druid数据源-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <!--微信工具包-->
+            <dependency>
+                <groupId>com.github.binarywang</groupId>
+                <artifactId>weixin-java-miniapp</artifactId>
+                <version>${weixin-java.version}</version>
+            </dependency>
+            <!--Spring session-->
+            <dependency>
+                <groupId>org.springframework.session</groupId>
+                <artifactId>spring-session-data-redis</artifactId>
+                <version>${session.version}</version>
+            </dependency>
+            <!--通过Ip获取城市信息-->
+            <dependency>
+                <groupId>org.lionsoul</groupId>
+                <artifactId>ip2region</artifactId>
+                <version>${ip2region.version}</version>
+            </dependency>
+            <!--IO工具-->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commonsIo.version}</version>
+            </dependency>
+            <!-- 核心包，为了黑马的组件能够方便修改且正常使用-->
+            <dependency>
+                <groupId>com.itheima</groupId>
+                <artifactId>pd-tools-common</artifactId>
+                <version>${pinda.tool.version1}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.itheima</groupId>
+                <artifactId>pd-tools-core</artifactId>
+                <version>${pinda.tool.version1}</version>
+            </dependency>
+            <!-- 数据校验-->
+            <dependency>
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator.version}</version>
+            </dependency>
+            <!-- swagger相关-->
+<!--            <dependency>-->
+<!--                <groupId>io.springfox</groupId>-->
+<!--                <artifactId>springfox-swagger2</artifactId>-->
+<!--                <version>${springfox.swagger2.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>io.springfox</groupId>-->
+<!--                <artifactId>springfox-bean-validators</artifactId>-->
+<!--                <version>${springfox.swagger2.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>io.swagger</groupId>-->
+<!--                <artifactId>swagger-annotations</artifactId>-->
+<!--                <version>${swagger.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>io.swagger</groupId>-->
+<!--                <artifactId>swagger-models</artifactId>-->
+<!--                <version>${swagger.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>com.github.xiaoymin</groupId>-->
+<!--                <artifactId>knife4j-spring-boot-starter</artifactId>-->
+<!--                <version>${knife4j.version}</version>-->
+<!--            </dependency>-->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-micro-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-ui</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.swagger</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
-
+    <!-- 公共依赖 -->
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.github.xiaoymin</groupId>-->
+<!--            <artifactId>knife4j-spring-boot-starter</artifactId>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>com.github.xiaoymin</groupId>-->
+<!--            <artifactId>knife4j-micro-spring-boot-starter</artifactId>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>com.github.xiaoymin</groupId>-->
+<!--            <artifactId>knife4j-spring-ui</artifactId>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>io.swagger</groupId>-->
+<!--            <artifactId>swagger-annotations</artifactId>-->
+<!--        </dependency>-->
+
     </dependencies>
 
+    <repositories>
+    </repositories>
+
+    <!-- 打包配置 -->
     <build>
+        <resources>
+            <!-- 让@xx@生效 -->
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+            <!--解决encrypt读入失败问题-->
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>**/*.jks</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/*.jks</include>
+                </includes>
+            </resource>
+        </resources>
 
     </build>
 </project>

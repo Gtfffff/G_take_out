@@ -6,12 +6,20 @@
 
     <parent>
         <groupId>com.g</groupId>
-        <artifactId>g_take_out</artifactId>
+        <artifactId>g-app</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>g-deliveryman</artifactId>
+    <artifactId>g-admin</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.g</groupId>
+            <artifactId>g-security</artifactId>
+        </dependency>
+    </dependencies>
+
 
 
 </project>

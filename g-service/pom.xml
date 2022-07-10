@@ -5,44 +5,21 @@
     <parent>
         <artifactId>g_take_out</artifactId>
         <groupId>com.g</groupId>
+        <version>1.0-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>g-service</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
         <module>g-auth</module>
         <module>g-chatroom</module>
-        <module>g-gateway</module>
         <module>g-es</module>
+        <module>g-gateway</module>
     </modules>
 
-    <dependencyManagement>
-        <dependencies>
-            <!--G_take_out-->
-            <dependency>
-                <groupId>com.g</groupId>
-                <artifactId>g-auth</artifactId>
-                <version>${g.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.g</groupId>
-                <artifactId>g-auth</artifactId>
-                <version>${g.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.g</groupId>
-                <artifactId>g-auth</artifactId>
-                <version>${g.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.g</groupId>
-                <artifactId>g-auth</artifactId>
-                <version>${g.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
         <!--Spring-->
@@ -54,22 +31,26 @@
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>commons-io</groupId>
-                    <artifactId>commons-io</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!--据说discovery引入io有bug-->
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
         </dependency>
         <!--配置中心-->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+        </dependency>
+        <!--公共资源-->
+        <dependency>
+            <groupId>com.g</groupId>
+            <artifactId>g-commons</artifactId>
+        </dependency>
+        <!--Feign-->
+        <dependency>
+            <groupId>com.g</groupId>
+            <artifactId>g-feign-api</artifactId>
+        </dependency>
+        <!--Session共享-->
+        <dependency>
+            <groupId>com.g</groupId>
+            <artifactId>g-session</artifactId>
         </dependency>
     </dependencies>
 
